@@ -1,11 +1,12 @@
 h3 
 {
-    color: blue;
+    color: grey;
+    text-align: center;
 }
   
 canvas 
 {
-  background : black;  
+  background : orange;  
 }
 
 #canvasDiv 

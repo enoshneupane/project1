@@ -13,7 +13,6 @@ for (var i = 1 ; i < 10 ;i++) {
         used[i] = false;
 }
 
-
 for (var i = 1; i < 10; i++) {
         drawState[i] = button[i].getContext('2d');
 }
@@ -35,6 +34,8 @@ function legalClicks(index) {
         flag = 1;
     }
     else{
+        if (!used[index]) {
+        used[index] = true;
         used[index] = true;
         content[index] = '0';
         drawState[index].beginPath();
@@ -42,37 +43,44 @@ function legalClicks(index) {
         drawState[index].arc(28,28,20,0,Math.PI*2,false);
         drawState[index].stroke();
         drawState[index].closePath();
-        flag = 0;
+        }
+        flag = 0; 
     }
-   checkGame();
+   var win1 = checkGame("x");
+   
+   if (win1 == 1) {
+       alert("Player 1 Won");
+   }
+   var win2 = checkGame("0");
+   if (win2 == 1) {
+        alert("Player 2 Won");
+    }
 }
 
-function checkGame() {
-    if (content[1] == 'x' && content[2] == 'x' && content[3] =='x') {
-        alert('Player 1 won');
+function checkGame(z) {
+    if (content[1] == z && content[2] == z && content[3] == z) {
+        return 1;
     }
-    else if (content[1] == 'x' && content[4] == 'x' && content[7] =='x') {
-        alert('Player 1 won');
+    else if (content[1] == z && content[4] == z && content[7] == z) {
+        return 1;
     }
-    else if (content[1] == 'x' && content[5] == 'x' && content[9] =='x') {
-        alert('Player 1 won');
+    else if (content[1] == z && content[5] == z && content[9] == z) {
+        return 1;
     }
-    else if (content[2] == 'x' && content[5] == 'x' && content[8] =='x') {
-        alert('Player 1 won');
+    else if (content[2] == z && content[5] == z && content[8] == z) {
+        return 1;
     }
-    else if (content[3] == 'x' && content[6] == 'x' && content[9] =='x') {
-        alert('Player 1 won');
+    else if (content[3] == z && content[6] == z && content[9] == z) {
+        return 1;
     }
-    else if (content[3] == 'x' && content[5] == 'x' && content[7] =='x') {
-        alert('Player 1 won');
+    else if (content[3] == z && content[5] == z && content[7] == z) {
+        return 1;
     }
-    if (content[4] == 'x' && content[5] == 'x' && content[6] =='x') {
-        alert('Player 1 won');
+    if (content[4] == z && content[5] == z && content[6] == z) {
+        return 1;
     }
-    else if (content[7] == 'x' && content[8] == 'x' && content[9] =='x') {
-        alert('Player 1 won');
-    }
-    else {
-        continue;
+    else if (content[7] == z && content[8] == z && content[9] == z) {
+        return 1;
     }
 }
+

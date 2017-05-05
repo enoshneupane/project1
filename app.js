@@ -1,22 +1,28 @@
-    
     var button = [];                    //array of buttons
     var drawState = [];                 //array to draw in canvas
-    var used = [];
-    var content = [];
-    var flag = 0;
+    var used = [];                      //array to mark used and not used
+    var content = [];                   //array to check the drawing shapes or string shapes
+    var flag = 0;                       //useful for switching between players
+    
     for (var i = 1 ; i < 10 ;i++) {
         button[i] = document.getElementById('layer'+i);  //calls the canvas id in html file 
     }
     
     for (var i = 1 ; i < 10 ;i++) {
-            used[i] = false;
+            used[i] = false;                            //set all the block of grid to not used initially
     }
     
     for (var i = 1; i < 10; i++) {
-            drawState[i] = button[i].getContext('2d');
+            drawState[i] = button[i].getContext('2d');  //method returns a drawing context on the canvas, or null 
     }
     
-    function legalClicks(index) {  
+    //params: index that represent the layer of canvas
+    //effects : depending on player it draws shape on canvas, calls checkWin to find winner and 
+    //displays message accordingly
+    //returns :none
+    //this function is called in html whenever an user click the canvas
+
+    function legalClicks(index) {                   
         if (flag == 0) {
             if (!used[index]) {
             used[index] = true;
@@ -42,23 +48,29 @@
             drawState[index].arc(45,48,28,0,Math.PI*2,false);
             drawState[index].stroke();
             drawState[index].closePath();
-            }
-            flag = 0; 
         }
-       var win1 = checkGame("x");
+        flag = 0; 
+    }
+       var win1 = checkWin("x");
        
        if (win1 == 1) {
            alert("Player 1 Won");
-           player1Score++;
+           return;
        }
-       var win2 = checkGame("0");
+       
+       var win2 = checkWin("0");
        if (win2 == 1) {
             alert("Player 2 Won");
-            player2Score++;
+            return;
         }
+       checkTie();       
     }
     
-    function checkGame(z) {
+    //params : take string "x" or "0"
+    //effects :finds winning combination and choses winner
+    //minimum of 3 layers in grid should be matched to win so it take that into account and 
+    //checks the combination in valid places
+    function checkWin(z) {
         if (content[1] == z && content[2] == z && content[3] == z) {
             return 1;
         }
@@ -85,3 +97,15 @@
         }
     }
     
+    //params: none
+    //efffects: if all layers have shapes drawn and there is no winning combination, its draw
+    //returns : boolean true if its tie
+    function checkTie() {
+        for (var i = 1; i < 10; i++) {
+            if (content[i] != 'x' && content[i] != '0') {  
+                return false;
+            }
+        }
+    alert("Draw!  Play again!");
+    return true;
+    }

@@ -1,4 +1,4 @@
-//this file is the brain of the app
+
 var button = [];                    //array of buttons
 var drawState = [];                 //array to draw in canvas
 var used = [];
@@ -18,7 +18,7 @@ for (var i = 1; i < 10; i++) {
         drawState[i] = button[i].getContext('2d');
 }
 
-function legalClicks(index) {
+function legalClicks(index) {  
     if (flag == 0) {
         if (!used[index]) {
         used[index] = true;
@@ -44,35 +44,35 @@ function legalClicks(index) {
         drawState[index].closePath();
         flag = 0;
     }
-    //checkGame();
+   checkGame();
 }
 
 function checkGame() {
-    for (var i = 1; i < 10; i++) {
-    //     if (content[i] == 'x') {
-    //         if ((content[] )content[2] && content[3])) {
-    //             alert("Player 1 Won");
-    //             break;
-    //         }
-    //         else if (content[1] == content[4] && content[7]) {
-    //             alert("Player 1 Won");
-    //             break;
-    //         }
-    //         else if (content[2] == content[5] && content[8]) {
-    //             alert("Player 1 Won");
-    //             break;
-    //         }
-    //         else if (content[3] == content[6] && content[9]) {
-    //             alert("Player 1 Won");
-    //             break;
-    //         }
-    //     }
+    if (content[1] == 'x' && content[2] == 'x' && content[3] =='x') {
+        alert('Player 1 won');
+    }
+    else if (content[1] == 'x' && content[4] == 'x' && content[7] =='x') {
+        alert('Player 1 won');
+    }
+    else if (content[1] == 'x' && content[5] == 'x' && content[9] =='x') {
+        alert('Player 1 won');
+    }
+    else if (content[2] == 'x' && content[5] == 'x' && content[8] =='x') {
+        alert('Player 1 won');
+    }
+    else if (content[3] == 'x' && content[6] == 'x' && content[9] =='x') {
+        alert('Player 1 won');
+    }
+    else if (content[3] == 'x' && content[5] == 'x' && content[7] =='x') {
+        alert('Player 1 won');
+    }
+    if (content[4] == 'x' && content[5] == 'x' && content[6] =='x') {
+        alert('Player 1 won');
+    }
+    else if (content[7] == 'x' && content[8] == 'x' && content[9] =='x') {
+        alert('Player 1 won');
+    }
+    else {
+        alert("draw");
     }
 }
-
-function reInitialize() {
-    for (var i = 1; i < 10; i++) {
-        context.clearRect(0, 0, 0, 0);
-    }
-}
-

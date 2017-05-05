@@ -1,23 +1,29 @@
-h3 
+h1 
 {
     color: grey;
     margin-left: 150px;
+    font-family: Vivaldi, cursive;
 }
+
 canvas 
 {
   background : orange;  
 }
+
 #canvasDiv 
 {
  margin: 50px auto 40px;
  margin-right: auto;
  margin-left:  160px;
 }
+
 #button1
 {
  margin-left: 160px;
  background-color: skyblue;
 }
+
+
 
 
 

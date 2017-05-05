@@ -73,6 +73,6 @@ function checkGame() {
         alert('Player 1 won');
     }
     else {
-        alert("draw");
+        continue;
     }
 }
